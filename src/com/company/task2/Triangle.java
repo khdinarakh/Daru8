@@ -1,5 +1,7 @@
 package com.company.task2;
 
+import java.util.Objects;
+
 public class Triangle {
     private int side1;
     private int side2;
@@ -43,5 +45,22 @@ public class Triangle {
     public double calculateArea (){
         double semiPerimeter = calculatePerimeter() / 2;
         return  Math.sqrt(semiPerimeter * (semiPerimeter - getSide1()) * (semiPerimeter - getSide2()) * (semiPerimeter - getSide3()));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Triangle)) return false;
+        Triangle triangle = (Triangle) o;
+        return getSide1() == triangle.getSide1() && getSide2() == triangle.getSide2() && getSide3() == triangle.getSide3();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getSide1(), getSide2(), getSide3());
+    }
+
+    public Triangle clone() {
+        return new Triangle(this.side1, this.side2, this.side3);
     }
 }

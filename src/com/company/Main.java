@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.task1.Group;
 import com.company.task1.Student;
 import com.company.task2.Triangle;
 import com.company.task3.Rectangle;
@@ -20,8 +21,8 @@ public class Main {
         first.setAddress("Коктем-2");
         first.setId(24);
 
-        Student second = new Student("Азамат", "Азаматулы", "New York", 1);
-        Student third = new Student("Кристина", "Азаматулы", "New York", 3);
+        Student second = new Student(1, "Азамат", "Азаматулы", "New York", new Group(11));
+        Student third = new Student(3, "Кристина", "Азаматулы", "New York", new Group(11));
         System.out.println(second.toString());
         System.out.println(third.toString());
         System.out.println(first.toString());
@@ -55,6 +56,21 @@ public class Main {
 
         System.out.println(movie.toString());
         System.out.println(movie2.toString());
+
+
+
+        //the assignment operator then it will create a copy of the reference variable
+
+        Student firstStudent = new Student(7,"Dinara", "Khalidullayeva" , "Kabanbay 64", new Group(11));
+        Student copyFirstStudentInfo = firstStudent;
+        // Any change made in copy object will
+        // be reflected in original
+        System.out.println("Original: " + firstStudent.getName() + " Copy:" + copyFirstStudentInfo.getName());
+        copyFirstStudentInfo.setName("Di");
+        System.out.println("After changing copy, the org will be: " + firstStudent.getName() + " Copy:" + copyFirstStudentInfo.getName());
+        firstStudent.setName("Didi");
+        System.out.println("After changing org: " + firstStudent.getName() + " Copy:" + copyFirstStudentInfo.getName());
+
 
     }
 }

@@ -1,6 +1,8 @@
 package com.company.task5;
 
-public class Movie {
+import java.util.Objects;
+
+public class Movie implements Cloneable{
     /*
     title, которая является строкой, представляющей название фильма
 studio, которая является строкой, представляющей студию, снявшую фильм
@@ -55,4 +57,23 @@ rating, которая представляет собой строку, обо�
                 ", rating='" + rating + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Movie)) return false;
+        Movie movie = (Movie) o;
+        return getTitle().equals(movie.getTitle()) && getStudio().equals(movie.getStudio()) && getRating().equals(movie.getRating());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTitle(), getStudio(), getRating());
+    }
+
+    @Override
+    public Movie clone() throws CloneNotSupportedException{
+        return (Movie) super.clone();
+    }
+
 }
